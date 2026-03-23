@@ -1,0 +1,126 @@
+================================================================================
+DOCUMENTACIÓN DEL PROYECTO: ARBT DIGITAL ENTERPRISE
+================================================================================
+
+1. DESCRIPCIÓN GENERAL
+--------------------------------------------------------------------------------
+Este proyecto consiste en un sitio web para una agencia digital ("ARBT Digital Enterprise"). 
+El sitio es multipágina, completamente responsivo y cuenta con funcionalidades dinámicas 
+como animaciones CSS, validación de formularios y persistencia de datos local.
+
+El objetivo principal es presentar servicios, información de la empresa y capturar 
+clientes potenciales a través de un formulario de contacto inteligente que registra 
+la fecha y hora exacta de la solicitud mediante una API externa.
+
+2. ESTRUCTURA DE ARCHIVOS Y CARPETAS
+--------------------------------------------------------------------------------
+El proyecto sigue una estructura organizada separando lógica, estilos y estructura:
+
+/ (Raíz del proyecto)
+|
++--- css/ (Estilos en cascada)
+|    |--- main.css          # Estilos globales (variables, header, footer, reset)
+|    |--- contacto.css      # Estilos específicos para el formulario y paneles
+|    |--- peticiones.css    # Estilos para la tabla de visualización de datos
+|    |--- servicios.css     # Estilos para las tarjetas de servicios
+|    |--- sobre.css         # Estilos para la sección "Sobre Nosotros"
+|
++--- js/ (Lógica JavaScript)
+|    |--- main.js           # Funcionalidad global (ej. menú móvil, efectos scroll)
+|    |--- contacto.js       # Manejo del formulario y validación
+|    |--- peticiones.js     # Lógica de negocio, API y clases de datos (DETALLADO ABAJO)
+|    |--- ver-peticiones.js # Lógica para renderizar la tabla de peticiones
+|    |--- servicios.js      # Scripts específicos de la página servicios
+|    |--- sobre.js          # Scripts específicos de la página sobre
+|
++--- pages/ (Archivos HTML)
+     |--- index.html        # Página de inicio (Landing page)
+     |--- servicios.html    # Catálogo de servicios
+     |--- sobre.html        # Información de la empresa y equipo
+     |--- contacto.html     # Formulario de contacto
+     |--- peticiones.html   # Panel de visualización de solicitudes recibidas
+
+3. DETALLE DE FUNCIONALIDAD POR PÁGINA
+--------------------------------------------------------------------------------
+- index.html: 
+  Portada con sección "Hero" de dos columnas, llamadas a la acción (CTA) animadas 
+  y presentación de valor. Usa `main.js` para efectos visuales.
+
+- servicios.html: 
+  Grid de tarjetas con iconos CSS puros (sin imágenes externas) que describen 
+  la oferta de la agencia.
+
+- contacto.html: 
+  Interfaz dividida: formulario a la izquierda y panel de información a la derecha. 
+  Se conecta con `contacto.js` para procesar los datos ingresados.
+
+- peticiones.html: 
+  Página de administración (simulada) que lee los datos guardados en el navegador 
+  y los presenta en una tabla ordenada cronológicamente.
+
+4. ANÁLISIS PROFUNDO: PETICIONES.JS
+--------------------------------------------------------------------------------
+Este es el archivo central de la lógica de negocio para el manejo de datos de usuarios. 
+A continuación se detalla su funcionamiento, estructura y conexión.
+
+A) ESTRUCTURA DEL CÓDIGO
+   El archivo contiene tres componentes principales:
+   1. Clase `Usuario`: Define el modelo de datos.
+   2. API & Factory: Lógica para obtener fecha/hora externa y crear objetos.
+   3. Persistencia: Funciones para guardar/leer de `localStorage`.
+
+B) CÓMO FUNCIONA (PASO A PASO)
+
+   1. La Clase Usuario:
+      Define qué es una "petición" en nuestro sistema.
+      constructor(nombre, correo, servicio, mensaje, fecha, hora)
+      - Almacena los datos del formulario más la marca de tiempo.
+      - Incluye un método `horaRegistro()` para formatear la salida.
+
+   2. Función `ObtenerDatos()` (Consumo de API):
+      - Realiza una petición asíncrona (fetch) a 'https://timeapi.io/...'.
+      - Objetivo: Obtener la hora oficial de la Ciudad de México, evitando que el 
+        usuario pueda manipular la hora de su dispositivo localmente.
+      - Manejo de errores: Si la API falla, hace un "fallback" y usa la fecha 
+        local del sistema (`new Date()`) para no romper el flujo.
+
+   3. Función `crearUsuarioConApi()`:
+      - Actúa como un constructor asíncrono.
+      - Primero espera a que `ObtenerDatos()` responda.
+      - Luego instancia la clase `Usuario` con los datos del formulario y 
+        la fecha obtenida.
+
+   4. Persistencia (`guardarPeticion` / `obtenerPeticiones`):
+      - Utiliza `localStorage` del navegador para guardar los datos permanentemente 
+        (mientras no se borre caché).
+      - Convierte el array de objetos a JSON string para almacenarlo.
+
+C) CONEXIÓN CON LA PÁGINA (EL FLUJO DE DATOS)
+
+   1. Captura (en contacto.html / contacto.js):
+      - El usuario da clic en "Enviar".
+      - `contacto.js` previene el envío tradicional (`e.preventDefault()`).
+      - Llama a `crearUsuarioConApi(...)` importada de `peticiones.js`.
+
+   2. Procesamiento (en peticiones.js):
+      - Se consulta la API de tiempo.
+      - Se crea el objeto `Usuario`.
+      - Se devuelve la promesa resuelta a `contacto.js`.
+
+   3. Almacenamiento (en contacto.js):
+      - Al recibir el objeto `Usuario` creado, `contacto.js` llama a 
+        `guardarPeticion(usuario)` para guardarlo en memoria.
+      - Muestra mensaje de éxito en pantalla.
+
+   4. Visualización (en peticiones.html / ver-peticiones.js):
+      - Al cargar la página, `ver-peticiones.js` llama a `obtenerPeticiones()`.
+      - Recibe el array de objetos guardados.
+      - Genera dinámicamente las filas de la tabla HTML (`<tr><td>...</td></tr>`).
+
+5. CONCLUSIÓN TÉCNICA
+--------------------------------------------------------------------------------
+El sistema utiliza un enfoque moderno de JavaScript (ES6+) con:
+- Clases para modelado de datos.
+- Async/Await para manejo de promesas y APIs.
+- LocalStorage para persistencia de datos sin backend real.
+- Manipulación del DOM para actualizaciones de interfaz en tiempo real.

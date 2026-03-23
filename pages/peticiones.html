@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peticiones Recibidas | ARBT Digital Enterprise</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/peticiones.css">
+</head>
+<body>
+    <header class="header">
+        <a href="../index.html" class="logo">
+            <div class="logo-icon">A</div>
+            <span>ARBT Digital Enterprise</span>
+        </a>
+        <button class="menu-toggle" aria-label="Abrir menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="menu">
+            <a href="../index.html">Inicio</a>
+            <a href="servicios.html">Servicios</a>
+            <a href="sobre.html">Sobre Nosotros</a>
+            <a href="contacto.html">Contacto</a>
+            <a href="peticiones.html" class="activo">Peticiones</a>
+            <a href="contacto.html" class="menu-cta">Cotizar</a>
+        </nav>
+    </header>
+
+    <main class="contenedor">
+        <h1 style="margin-bottom: 2rem;">Peticiones Recibidas</h1>
+        <p style="color: var(--muted); margin-bottom: 3rem;">Registro de solicitudes de servicio generadas desde el formulario de contacto.</p>
+
+        <div class="tabla-container">
+            <table class="tabla-peticiones">
+                <thead>
+                    <tr>
+                        <th>Fecha/Hora</th>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Servicio</th>
+                        <th>Detalles</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="lista-peticiones">
+                    <!-- Los datos se insertarán aquí con JS -->
+                </tbody>
+            </table>
+            <div id="no-data" style="display: none; text-align: center; padding: 2rem; color: var(--muted);">
+                No hay peticiones registradas aún.
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 ARBT Digital Enterprise. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/peticiones.js"></script>
+    <script src="../js/ver-peticiones.js"></script>
+</body>
+</html>

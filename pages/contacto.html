@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacto | ARBT Digital Enterprise</title>
+<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../css/contacto.css">
+</head>
+<body>
+<header class="header">
+<a href="../index.html" class="logo">
+<div class="logo-icon">A</div>
+<span>ARBT Digital Enterprise</span>
+</a>
+<button class="menu-toggle" aria-label="Abrir menú">
+<span></span>
+<span></span>
+<span></span>
+</button>
+<nav class="menu">
+<a href="../index.html">Inicio</a>
+<a href="servicios.html">Servicios</a>
+<a href="sobre.html">Sobre Nosotros</a>
+<a href="contacto.html">Contacto</a>
+            <a href="peticiones.html">Peticiones</a>
+            <a href="contacto.html" class="menu-cta">Cotizar</a>
+</nav>
+</header>
+
+<main class="contenedor">
+<h1 style="text-align: center; margin-bottom: 3rem;">Hablemos de tu Proyecto</h1>
+
+<div class="contacto-layout">
+<div class="contacto-info">
+<p style="font-size: 1.1rem; color: var(--muted);">Estamos listos para ayudarte a gestionar tu presencia digital. Completa el formulario y te responderemos en menos de 24 horas.</p>
+<div class="info-item">
+<div class="info-icon">📧</div>
+<div>
+<strong>Email</strong>
+<div style="color: var(--muted)">contacto@arbtdigital.com</div>
+</div>
+</div>
+<div class="info-item">
+<div class="info-icon">📱</div>
+<div>
+<strong>Teléfono</strong>
+<div style="color: var(--muted)">+52 (55) 1234 5678</div>
+</div>
+</div>
+<div class="info-item">
+<div class="info-icon">📍</div>
+<div>
+<strong>Oficina</strong>
+<div style="color: var(--muted)">Av. Tecnológico 123, Ciudad de México</div>
+</div>
+</div>
+</div>
+
+<div class="form-container">
+<form id="form-contacto">
+<div class="campo">
+<label for="nombre">Nombre Completo</label>
+<input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
+</div>
+<div class="campo">
+<label for="email">Correo Electrónico</label>
+<input type="email" id="email" name="email" required placeholder="tu@empresa.com">
+</div>
+<div class="campo">
+<label for="servicio">Servicio de Interés</label>
+<select id="servicio" name="servicio">
+<option value="desarrollo">Desarrollo Web / App</option>
+<option value="hosting">Hosting y Dominios</option>
+<option value="servidores">Gestión de Servidores</option>
+<option value="modificacion">Modificación de Sitio Existente</option>
+<option value="otro">Otro</option>
+</select>
+</div>
+<div class="campo">
+<label for="mensaje">Detalles del Proyecto</label>
+<textarea id="mensaje" name="mensaje" rows="4" required placeholder="Cuéntanos qué necesitas..."></textarea>
+</div>
+<button type="submit" class="boton" style="width: 100%">Enviar Mensaje</button>
+</form>
+<div id="estado" class="estado"></div>
+</div>
+</div>
+</main>
+
+<footer class="footer">
+<p>&copy; 2026 ARBT Digital Enterprise. Todos los derechos reservados.</p>
+</footer>
+
+<script src="../js/main.js"></script>
+<script src="../js/peticiones.js"></script>
+<script src="../js/contacto.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+.tabla-container {
+    overflow-x: auto;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+.tabla-peticiones {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+}
+
+.tabla-peticiones th,
+.tabla-peticiones td {
+    padding: 1.25rem 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.tabla-peticiones th {
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.tabla-peticiones tr:last-child td {
+    border-bottom: none;
+}
+
+.tabla-peticiones tr:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.tabla-peticiones td {
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.tabla-peticiones td:nth-child(2) { /* Nombre */
+    color: white;
+    font-weight: 500;
+}
+
+.badge-servicio {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--primary);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.btn-borrar {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.btn-borrar:hover {
+    background: #ef4444;
+    color: white;
+    transform: scale(1.05);
+}
