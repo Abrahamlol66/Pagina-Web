@@ -50,36 +50,16 @@ async function crearUsuarioConApi(nombre, correo, servicio, mensaje) {
     return new Usuario(nombre, correo, servicio, mensaje, fecha, hora);
 }
 
-// Funciones para persistencia de datos (LocalStorage)
-function guardarPeticion(usuario) {
-    const peticiones = obtenerPeticiones();
-    peticiones.push(usuario);
-    localStorage.setItem('peticiones_arbt', JSON.stringify(peticiones));
+// Funciones de persistencia deshabilitadas - Preparando migración a Backend con Supabase
+function obtenerPeticiones() {
+    return []; // Retorna vacío ya que no se usa localStorage
 }
 
-function obtenerPeticiones() {
-    const data = localStorage.getItem('peticiones_arbt');
-    let peticiones = data ? JSON.parse(data) : [];
-    
-    // Migración: Asignar ID a registros antiguos que no lo tengan
-    let huboCambios = false;
-    peticiones = peticiones.map(p => {
-        if (!p.id) {
-            p.id = Date.now().toString(36) + Math.random().toString(36).substr(2);
-            huboCambios = true;
-        }
-        return p;
-    });
-
-    if (huboCambios) {
-        localStorage.setItem('peticiones_arbt', JSON.stringify(peticiones));
-    }
-
-    return peticiones;
+function guardarPeticion(usuario) {
+    console.log('Petición lista para enviar al backend:', usuario);
+    // Próximamente: Integración con API de Supabase
 }
 
 function eliminarPeticionPorId(id) {
-    let peticiones = obtenerPeticiones();
-    peticiones = peticiones.filter(p => p.id !== id);
-    localStorage.setItem('peticiones_arbt', JSON.stringify(peticiones));
+    console.log('Solicitud de eliminación para ID:', id);
 }

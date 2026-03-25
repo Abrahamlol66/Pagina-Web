@@ -19,8 +19,9 @@ document.getElementById('form-contacto')?.addEventListener('submit', (e) => {
             console.log('Objeto Usuario creado:', usuario);
             console.log('Fecha y hora de registro:', usuario.horaRegistro());
             
-            // Guardar en localStorage
-            guardarPeticion(usuario);
+            // La persistencia se realizará a través del backend en el futuro.
+            // Por ahora, solo simulamos el éxito en la UI.
+            guardarPeticion(usuario); 
 
             // Simular éxito visual en la UI
             btn.textContent = originalText;
