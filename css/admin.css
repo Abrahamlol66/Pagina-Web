@@ -1,0 +1,76 @@
+/* Estilos específicos para el panel de administración y login */
+
+.login-container {
+    max-width: 400px;
+    margin: 100px auto;
+    background: var(--surface);
+    padding: 2.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.login-header .logo-icon {
+    margin: 0 auto 1rem;
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: white;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+    border-color: var(--primary);
+}
+
+.btn-login {
+    width: 100%;
+    padding: 0.8rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-login:hover {
+    background: var(--primary-dark);
+}
+
+#error-msg {
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+    padding: 0.8rem;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+    font-size: 0.85rem;
+    text-align: center;
+    display: none;
+}

@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Peticiones Recibidas | ARBT Digital Enterprise</title>
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/peticiones.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/peticiones.css">
 </head>
 <body>
     <header class="header">
-        <a href="../index.html" class="logo">
+        <a href="../../index.html" class="logo">
             <div class="logo-icon">A</div>
             <span>ARBT Digital Enterprise</span>
         </a>
@@ -19,20 +19,21 @@
             <span></span>
         </button>
         <nav class="menu">
-            <a href="../index.html">Inicio</a>
-            <a href="servicios.html">Servicios</a>
-            <a href="sobre.html">Sobre Nosotros</a>
-            <a href="contacto.html">Contacto</a>
-            <a href="peticiones.html" class="activo">Peticiones</a>
-            <a href="contacto.html" class="menu-cta">Cotizar</a>
+            <a href="../../index.html">Inicio</a>
+            <a href="../servicios.html">Servicios</a>
+            <a href="../sobre.html">Sobre Nosotros</a>
+            <a href="../contacto.html">Contacto</a>
+            <a href="peticiones.html" class="activo">Panel Admin</a>
+            <a href="#" id="logout-btn" class="menu-cta btn-logout">Cerrar Sesión</a>
         </nav>
     </header>
 
     <main class="contenedor">
-        <h1 style="margin-bottom: 2rem;">Peticiones Recibidas</h1>
-        <p style="color: var(--muted); margin-bottom: 3rem;">Registro de solicitudes de servicio generadas desde el formulario de contacto.</p>
+        <h1 style="margin-bottom: 2rem;">Panel de Administración: Peticiones</h1>
+        <p style="color: var(--muted); margin-bottom: 3rem;">Gestión de solicitudes recibidas.</p>
 
         <div class="tabla-container">
+            <!-- Auth check script will be added here -->
             <table class="tabla-peticiones">
                 <thead>
                     <tr>
@@ -58,8 +59,11 @@
         <p>&copy; 2026 ARBT Digital Enterprise. Todos los derechos reservados.</p>
     </footer>
 
-    <script src="../js/main.js"></script>
-    <script src="../js/peticiones.js"></script>
-    <script src="../js/ver-peticiones.js"></script>
+    <!-- Supabase Auth Check -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/admin-auth.js"></script>
+    <script src="../../js/peticiones.js"></script>
+    <script src="../../js/ver-peticiones.js"></script>
 </body>
 </html>

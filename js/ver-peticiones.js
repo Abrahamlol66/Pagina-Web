@@ -3,8 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const noData = document.getElementById('no-data');
     const peticiones = obtenerPeticiones();
 
-    if (peticiones.length === 0) {
+    if (!peticiones || peticiones.length === 0) {
         noData.style.display = 'block';
+        noData.textContent = 'Las peticiones locales han sido desactivadas. Próximamente se mostrarán datos desde el backend (Supabase).';
         return;
     }
 
